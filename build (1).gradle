@@ -1,0 +1,28 @@
+plugins {
+    id "com.android.application"
+}
+
+android {
+    namespace "com.fanfold.app"
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.fanfold.app"
+        minSdk 23
+        targetSdk 34
+        versionCode 10
+        versionName "1.0.1"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+}
+// No third-party dependencies: the app only uses the Android framework.

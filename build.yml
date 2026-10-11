@@ -1,0 +1,44 @@
+name: build
+
+on:
+  push:
+  pull_request:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends default-jdk aapt dalvik-exchange apksigner zipalign \
+            android-sdk-platform-23 poppler-utils zbar-tools python3-reportlab python3-pil
+
+      - name: Engine tests
+        run: bash tools/engine-test/run_tests.sh
+
+      - name: Build APK
+        env:
+          # Optional repo secrets for release signing:
+          #   KEYSTORE_B64 (base64 of the .jks), KEYSTORE_PASS, KEY_ALIAS
+          KEYSTORE_B64: ${{ secrets.KEYSTORE_B64 }}
+          KEYSTORE_PASS: ${{ secrets.KEYSTORE_PASS }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+        run: |
+          if [ -n "$KEYSTORE_B64" ]; then
+            echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/release.jks"
+            export KEYSTORE="$RUNNER_TEMP/release.jks"
+          fi
+          bash build.sh
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Fanfold-apk
+          path: build/Fanfold.apk

@@ -1,0 +1,42 @@
+name: Printer report
+description: Tell us whether Fanfold works with your printer
+title: "[Printer] "
+labels: [printer-report]
+body:
+  - type: input
+    id: model
+    attributes:
+      label: Printer brand and model
+      placeholder: e.g. MUNBYN RW402B
+    validations: { required: true }
+  - type: input
+    id: bt-name
+    attributes:
+      label: Bluetooth name it shows when pairing
+      placeholder: e.g. RW402B-1A2B
+  - type: dropdown
+    id: result
+    attributes:
+      label: Did it work?
+      options:
+        - Works perfectly
+        - Works with a settings tweak (describe below)
+        - Connects but prints wrong (describe below)
+        - Can't connect
+    validations: { required: true }
+  - type: textarea
+    id: info
+    attributes:
+      label: Printer info from Fanfold
+      description: In Fanfold open Settings, scroll to Printer info, tap "Copy printer info" and paste it here.
+      render: text
+  - type: input
+    id: phone
+    attributes:
+      label: Phone and Android version
+      placeholder: e.g. Pixel 8, Android 16
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Settings you changed and what the test label looked like. Photos of the Fanfold test label are welcome; if you photograph a real shipping label, black out the addresses first.

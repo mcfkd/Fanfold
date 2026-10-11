@@ -1,0 +1,19 @@
+name: Bug / label prints wrong
+description: Something doesn't work or a label comes out wrong
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: Where did the label come from (eBay, Pirate Ship, USPS...), and how did you print it (share, Print menu)?
+    validations: { required: true }
+  - type: input
+    id: printer
+    attributes:
+      label: Printer and phone
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: Please don't attach real labels with buyer addresses; black them out first.
