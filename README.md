@@ -1,6 +1,10 @@
-# Fanfold
+<p align="center"><img src="docs/icon.png" width="128" alt="Fanfold app icon"></p>
 
-**Print shipping labels from your Android phone to a cheap Bluetooth thermal label printer. Free, no account, no subscription, no ads, no cloud.**
+<h1 align="center">Fanfold</h1>
+
+<p align="center"><b>Print shipping labels from your Android phone to a cheap Bluetooth thermal label printer.<br>Free, no account, no subscription, no ads, no cloud.</b></p>
+
+<p align="center"><a href="../../releases/latest">Download the latest release</a></p>
 
 Fanfold makes your label printer work like a normal printer on Android. Share a label to it, or pick it in any app's Print menu, and the label comes out the right size, fast. It talks to the printer directly in the printer's own command language (TSPL), so there's no vendor app in the middle.
 
